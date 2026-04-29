@@ -1,5 +1,5 @@
 {
-  "name": "ai-design-scorer",
+  "name": "ai-design-checker",
   "version": "0.1.0",
   "description": "Score landing pages against common AI design patterns",
   "type": "module",

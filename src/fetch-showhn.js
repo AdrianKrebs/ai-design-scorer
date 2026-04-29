@@ -36,7 +36,7 @@ async function fetchPage(page) {
     page: String(page)
   });
   const url = `https://hn.algolia.com/api/v1/search_by_date?${qs.toString()}`;
-  const res = await fetch(url, { headers: { 'User-Agent': 'ai-design-scorer/0.1' } });
+  const res = await fetch(url, { headers: { 'User-Agent': 'ai-design-checker/0.1' } });
   if (!res.ok) throw new Error(`HN API ${res.status}`);
   return res.json();
 }

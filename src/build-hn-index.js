@@ -23,7 +23,7 @@ while (totalPages < 60) {
   const qs = new URLSearchParams({ tags: 'show_hn', hitsPerPage: '100', numericFilters: filters });
   const url = `https://hn.algolia.com/api/v1/search_by_date?${qs.toString()}`;
   process.stdout.write(`HN page ${totalPages + 1} (before ts ${cursorTs})... `);
-  const res = await fetch(url, { headers: { 'User-Agent': 'ai-design-scorer/0.1' } });
+  const res = await fetch(url, { headers: { 'User-Agent': 'ai-design-checker/0.1' } });
   if (!res.ok) { console.log(`HTTP ${res.status}, stopping`); break; }
   const data = await res.json();
   const hits = data.hits || [];

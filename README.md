@@ -1,4 +1,4 @@
-# AI Design Scorer
+# AI Design Checker
 
 A tool to score Show HN projects (or any website) for common AI design patterns.
 Basis for the [blog post](https://www.adriankrebs.ch/blog/design-slop/) and the HN discussion ["Scoring Show HN submissions for AI design patterns"](https://news.ycombinator.com/item?id=47864393).

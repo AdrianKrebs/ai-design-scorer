@@ -14,7 +14,7 @@ const ROOT = resolve(__dirname, '..');
 //   --no-images       omit the <img> thumbnails (keeps the file tiny)
 //   --out=<path>      write the html to a custom path (default results/index.html)
 //   --cdn-base=<url>  use this base URL for screenshot src instead of the local
-//                     "screenshots/" path. e.g. https://kadoa.b-cdn.net/ai-design-scorer
+//                     "screenshots/" path. e.g. https://kadoa.b-cdn.net/ai-design-checker
 const noImages = process.argv.includes('--no-images');
 const outArg = process.argv.find(a => a.startsWith('--out='));
 const outPath = outArg ? outArg.slice('--out='.length) : join(ROOT, 'results', 'index.html');
@@ -63,7 +63,7 @@ const html = `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>AI Design Scorer - Results</title>
+<title>AI Design Checker - Results</title>
 <style>
   * { box-sizing: border-box; }
   body { font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; color: #111; background: #fafafa; }
@@ -122,8 +122,8 @@ const html = `<!doctype html>
 <body>
 
 <header>
-  <h1>AI Design Scorer - Results</h1>
-  <div class="sub">${total} Show HN submissions scored against 16 deterministic AI design patterns. <a href="https://github.com/AdrianKrebs/ai-design-scorer">Source</a> · <a href="https://www.adriankrebs.ch/blog/design-slop/">Background</a></div>
+  <h1>AI Design Checker - Results</h1>
+  <div class="sub">${total} Show HN submissions scored against 16 deterministic AI design patterns. <a href="https://github.com/AdrianKrebs/ai-design-checker">Source</a> · <a href="https://www.adriankrebs.ch/blog/design-slop/">Background</a></div>
 </header>
 
 <section class="stats">

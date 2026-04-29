@@ -8,7 +8,7 @@
 //   BUNNY_STORAGE_HOST — default ny.storage.bunnycdn.com
 //   BUNNY_STORAGE_ZONE — required
 //   BUNNY_CDN_BASE    — required, e.g. https://kadoa.b-cdn.net
-//   BUNNY_PREFIX      — default ai-design-scorer
+//   BUNNY_PREFIX      — default ai-design-checker
 //
 // Flags:
 //   --dry-run       list files that would upload, no network calls
@@ -26,7 +26,7 @@ const STORAGE_KEY = process.env.BUNNY_STORAGE_KEY || process.env.BUNNY_API_KEY;
 const STORAGE_HOST = process.env.BUNNY_STORAGE_HOST || 'ny.storage.bunnycdn.com';
 const STORAGE_ZONE = process.env.BUNNY_STORAGE_ZONE;
 const CDN_BASE = process.env.BUNNY_CDN_BASE;
-const PREFIX = process.env.BUNNY_PREFIX || 'ai-design-scorer';
+const PREFIX = process.env.BUNNY_PREFIX || 'ai-design-checker';
 
 const dryRun = process.argv.includes('--dry-run');
 const concArg = process.argv.find(a => a.startsWith('--concurrency='));
