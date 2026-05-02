@@ -4,22 +4,31 @@ description: Score a URL for the 16 AI design patterns common to AI-generated la
 
 # AI Design Checker
 
-Runs the `ai-design-checker` CLI against a URL and reports which of the 16 deterministic design patterns trigger.
+Runs the bundled `ai-design-checker` CLI against a URL and reports which of the 16 deterministic design patterns trigger.
 
 ## How to use
 
 When the user asks to score, check, or analyze a URL for AI design patterns:
 
-1. Run the CLI in JSON mode for parseable output:
+1. **First-run setup** — only needed once per machine, ~200 MB Chromium download:
 
    ```bash
-   npx ai-design-checker <url> --json
+   cd "${CLAUDE_PLUGIN_ROOT}" && [ -d node_modules ] || npm install
+   npx playwright install chromium
    ```
 
-   - The first run on a fresh machine downloads Chromium (~200 MB) via Playwright. If the CLI exits with `Could not launch Chromium`, run `npx playwright install chromium` first.
-   - Each scan takes ~7 seconds. Don't fan out parallel runs.
+   If you've already run a scan on this machine before, skip both.
 
-2. Parse the returned JSON. Shape:
+2. **Run the CLI in JSON mode** for parseable output:
+
+   ```bash
+   node "${CLAUDE_PLUGIN_ROOT}/src/cli.js" <url> --json
+   ```
+
+   - Each scan takes ~7 seconds. Don't fan out parallel runs.
+   - If the CLI exits with `Could not launch Chromium`, run the playwright install line above first.
+
+3. **Parse the returned JSON.** Shape:
 
    ```jsonc
    {
@@ -36,18 +45,18 @@ When the user asks to score, check, or analyze a URL for AI design patterns:
    }
    ```
 
-3. Summarise for the user, leading with the verdict:
+4. **Summarise** for the user, leading with the verdict:
 
    - **Tier + score** as the headline.
    - **Triggered patterns** in a short list (use the `label` field).
    - For 1–2 of the most prominent triggers, include one specific signal from the `evidence` object (e.g. for `gradients`: "5 gradient backgrounds + hero gradient text").
-   - Don't repeat the full clean list; mention how many patterns were clean only if the user asks.
+   - Don't repeat the full clean list; mention the count of clean patterns only if asked.
 
 ## When NOT to use
 
 - The user provides text or a screenshot, not a URL — this skill needs a real reachable URL.
-- The user wants to score multiple sites in bulk — point them at `git clone … && npm run analyze`.
-- The user is asking about the methodology — the 16 patterns and rules live in `src/patterns/<id>.js` in the repo; link to https://github.com/AdrianKrebs/ai-design-checker.
+- The user wants to score multiple sites in bulk — point them at `npm run analyze` in the cloned repo.
+- The user is asking about the methodology — the 16 patterns and rules live in `src/patterns/<id>.js`; link to https://github.com/AdrianKrebs/ai-design-checker
 
 ## Pattern reference
 

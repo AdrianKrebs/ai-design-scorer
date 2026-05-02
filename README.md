@@ -13,8 +13,12 @@ Manual verification across ~150 labeled sites suggests ~5–10% false positives.
 ## Run on one URL (CLI)
 
 ```bash
+git clone https://github.com/AdrianKrebs/ai-design-checker
+cd ai-design-checker
+npm install
 npx playwright install chromium     # one-time, ~200 MB
-npx ai-design-checker https://example.com
+
+node src/cli.js https://example.com
 ```
 
 ```
@@ -32,9 +36,16 @@ Triggered:
 
 ## Use as a Claude Code skill
 
-Drop `~/.claude/plugins/ai-design-checker/` (or use Claude Code's plugin marketplace once published) and ask Claude things like *"score example.com for AI design patterns"* or *"how templated does acme.io look?"*. The skill calls the CLI and summarises the verdict.
+Inside Claude Code:
 
-Source: [`skills/check-design/SKILL.md`](skills/check-design/SKILL.md) · plugin manifest: [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json)
+```
+/plugin marketplace add AdrianKrebs/ai-design-checker
+/plugin install ai-design-checker
+```
+
+Then ask Claude things like *"score example.com for AI design patterns"* or *"how templated does acme.io look?"*. On first use Claude will run `npm install` and the Chromium download in the plugin directory automatically.
+
+Source: [`skills/check-design/SKILL.md`](skills/check-design/SKILL.md) · plugin manifest: [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) · marketplace: [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json)
 
 ## Run the full corpus
 

@@ -1,0 +1,11 @@
+{
+  "name": "ai-design-checker",
+  "owner": { "name": "Adrian Krebs", "url": "https://www.adriankrebs.ch" },
+  "plugins": [
+    {
+      "name": "ai-design-checker",
+      "source": ".",
+      "description": "Score any URL for the 16 AI design patterns common to AI-generated landing pages."
+    }
+  ]
+}

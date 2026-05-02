@@ -7,7 +7,8 @@
   "license": "MIT",
   "permissions": {
     "allow": [
-      "Bash(npx ai-design-checker *)",
+      "Bash(node */src/cli.js *)",
+      "Bash(npm install*)",
       "Bash(npx playwright install *)"
     ]
   }
